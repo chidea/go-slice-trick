@@ -1,0 +1,3 @@
+[submodule "go-type-template"]
+	path = go-type-template
+	url = git@github.com:chidea/go-type-template.git
