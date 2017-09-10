@@ -5,7 +5,7 @@ Are you ready to exchange runtime speed with ease of coding?
 ### Benchmark result
 
 ##### with all default types precompiled ( default setting of generate.go )
-|------------------------------+-----------------------------------+--------------------------+------------+------------|
+
 |                              | switch-case                       |                          | reflection |            |
 |------------------------------+-----------------------------------+--------------------------+------------+------------|
 | Function Name                | String Specified (ex:AppendStr()) | Reflection (ex:Append()) | String     | Reflection |
@@ -27,10 +27,9 @@ Are you ready to exchange runtime speed with ease of coding?
 | Unshift                      | 264 ns/op                         | 673 ns/op                | 250 ns/op  | 707 ns/op  |
 | FilterWithoutAlloc           | 289 ns/op                         | 2253 ns/op               | 275 ns/op  | 2118 ns/op |
 | Reverse                      | 140 ns/op                         | 414 ns/op                | 130 ns/op  | 389 ns/op  |
-|------------------------------+-----------------------------------+--------------------------+------------+------------|
 
 ##### with string only precompiled 
-|------------------------------+-----------------------------------+--------------------------+------------+------------|
+
 |                              | switch-case                       |                          | reflection |            |
 |------------------------------+-----------------------------------+--------------------------+------------+------------|
 | Function Name                | String Specified (ex:AppendStr()) | Reflection (ex:Append()) | String     | Reflection |
@@ -52,7 +51,6 @@ Are you ready to exchange runtime speed with ease of coding?
 | Unshift                      | 249 ns/op                         | 649 ns/op                | 248 ns/op  | 630 ns/op  |
 | FilterWithoutAlloc           | 270 ns/op                         | 2038 ns/op               | 277 ns/op  | 2026 ns/op |
 | Reverse                      | 138 ns/op                         | 427 ns/op                | 136 ns/op  | 380 ns/op  |
-|------------------------------+-----------------------------------+--------------------------+------------+------------|
 
 ### Result of benchmark as usage
  - Usually, switch-case style is a bit slower.
