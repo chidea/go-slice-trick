@@ -9,7 +9,6 @@ Are you ready to exchange runtime speed with ease of coding?
 |                              | switch-case                       |                          | reflection |            |
 |------------------------------|-----------------------------------|--------------------------|------------|------------|
 | Function Name                | String Specified (ex:AppendStr()) | Reflection (ex:Append()) | String     | Reflection |
-|------------------------------|-----------------------------------|--------------------------|------------|------------|
 | Append                       | 244 ns/op                         | 625 ns/op                | 248 ns/op  | 600 ns/op  |
 | Copy                         | 182 ns/op                         | 626 ns/op                | 174 ns/op  | 632 ns/op  |
 | Cut                          | 134 ns/op                         | 532 ns/op                | 92.9 ns/op | 473 ns/op  |
@@ -33,7 +32,6 @@ Are you ready to exchange runtime speed with ease of coding?
 |                              | switch-case                       |                          | reflection |            |
 |------------------------------|-----------------------------------|--------------------------|------------|------------|
 | Function Name                | String Specified (ex:AppendStr()) | Reflection (ex:Append()) | String     | Reflection |
-|------------------------------|-----------------------------------|--------------------------|------------|------------|
 | Append                       | 246 ns/op                         | 597 ns/op                | 249 ns/op  | 620 ns/op  |
 | Copy                         | 179 ns/op                         | 575 ns/op                | 198 ns/op  | 550 ns/op  |
 | Cut                          | 109 ns/op                         | 540 ns/op                | 92.2 ns/op | 467 ns/op  |
