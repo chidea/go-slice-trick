@@ -1,6 +1,48 @@
 # Generalized Golang [Slice trick](https://github.com/golang/go/wiki/SliceTricks) with reflect
 Are you ready to exchange runtime speed with ease of coding?
 
+### Examples
+```
+import slice
+...
+  names := []string{"john", "ann", "diana", "sam", "anderson"}
+  names = slice.Append(names, []string{"song", "choi"}).([]string)
+  // or
+  names = slice.AppendStr(names, []string{"song", "choi"})
+```
+```
+type car struct {
+  name string
+  value int
+}
+...
+	cars := []car{{"cadillac", 30}, {"jeep", 20}, {"sports", 100}}
+	mycar_, cars_ := slice.Pop(cars)
+	mycar := mycar_.(car)
+	cars = cars_.([]car)
+  // or
+  mycar, cars := PopCar(cars)
+  // but it needs regeneration with your custom struct definition in `slicetrick_generate.go` and `generate.go`
+```
+```
+var In = slice.In
+...
+  numbers := []int {1, 35, 23, 29, 3, 7, 15}
+  amILucky := In(numbers, 7)
+```
+
+### Result of benchmark as usage
+ - Usually, switch-case style is a bit slower.
+ - You can mock-up your program faster with reflection version of function.
+ - When it's ready to ship your program, you can switch to type specified version of functions.
+ - You can optimize further with custom list of precompiled types.
+
+### How to change precompiled types list and regenerate
+ - Open `generate.go` and edit type list (line number 2). Below is default value specifying all of the go value types.
+```
+//go:generate ./template -d bool int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 uintptr float32 float64 complex64 complex128 string
+```
+ - Type `go generate` to generate and build.
 
 ### Benchmark result
 
@@ -50,15 +92,3 @@ Are you ready to exchange runtime speed with ease of coding?
 | FilterWithoutAlloc           | 270 ns/op                         | 2038 ns/op               | 277 ns/op  | 2026 ns/op |
 | Reverse                      | 138 ns/op                         | 427 ns/op                | 136 ns/op  | 380 ns/op  |
 
-### Result of benchmark as usage
- - Usually, switch-case style is a bit slower.
- - You can mock-up your program faster with reflection version of function.
- - When it's ready to ship your program, you can switch to type specified version of functions.
- - You can optimize further with custom list of precompiled types.
-
-### How to change precompiled types list
- - Open `generate.go` and edit type list (line number 2). Below is default value specifying all of the go value types.
-```
-//go:generate ./template -d bool int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 uintptr float32 float64 complex64 complex128 string
-```
- - Type `go generate` to generate and build.
