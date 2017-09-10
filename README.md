@@ -29,6 +29,8 @@ var In = slice.In
 ...
   numbers := []int {1, 35, 23, 29, 3, 7, 15}
   amILucky := In(numbers, 7)
+  // or
+  amILucky := slice.T{7}.In(numbers)
 ```
 
 ### Result of benchmark as usage

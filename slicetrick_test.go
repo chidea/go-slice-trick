@@ -519,6 +519,13 @@ func BenchmarkReverseRef(b *testing.B) {
 func TestIn(t *testing.T) {
 	test1v_b(t, slice.InStr, slice.In, []string{"a", "b", "c"}, "a")
 }
+func TestMethodIn(t *testing.T) {
+	v := slice.T{"b"}.In([]string{"a", "b", "c"})
+	t.Log(v)
+	if !v {
+		t.Fail()
+	}
+}
 func logAndEval(t *testing.T, ts, tr interface{}) {
 	t.Logf("%+v", ts)
 	t.Logf("%+v", tr)

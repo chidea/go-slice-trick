@@ -13,6 +13,11 @@ func Len(a interface{}) int {
 	return reflect.ValueOf(a).Len()
 }
 
+type T struct{ Val interface{} }
+
+func (self T) In(slice interface{}) bool {
+	return In(slice, self.Val)
+}
 func In(slice, val interface{}) bool {
 	vov := reflect.ValueOf(val)
 	sliceval := reflect.ValueOf(slice)
