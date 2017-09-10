@@ -550,3 +550,36 @@ func eval(t *testing.T, ts, tr interface{}) {
 		t.Fail()
 	}
 }
+
+func TestNames(t *testing.T) {
+	names := []string{"john", "ann", "diana", "sam", "anderson"}
+	names = slice.Append(names, []string{"song", "choi"}).([]string)
+	t.Log(names)
+	// or
+	names = slice.AppendStr(names, []string{"song", "choi"})
+	t.Log(names)
+}
+
+type car struct {
+	name  string
+	value int
+}
+
+func TestCar(t *testing.T) {
+	cars := []car{{"cadillac", 30}, {"jeep", 20}, {"sports", 100}}
+	mycar_, cars_ := slice.Pop(cars)
+	mycar := mycar_.(car)
+	cars = cars_.([]car)
+	t.Log(mycar)
+	// or
+	//mycar, cars := PopCar(cars)
+	// but it needs regeneration with your custom struct definition in `slicetrick_generate.go` and `generate.go`
+}
+
+var In = slice.In
+
+func TestLuck(t *testing.T) {
+	numbers := []int{1, 35, 23, 29, 3, 7, 15}
+	amILucky := In(numbers, 7)
+	t.Log(amILucky)
+}
