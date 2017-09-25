@@ -37,3 +37,17 @@ func In_T_(slice []T, val T) bool {
 	}
 	return false
 }
+
+func Iif(test bool, onTrue interface{}, onFalse interface{}) interface{} {
+	if test {
+		return onTrue
+	}
+	return onFalse
+}
+
+func Iif_T_(test bool, onTrue T, onFalse T) T {
+	if test {
+		return onTrue
+	}
+	return onFalse
+}
