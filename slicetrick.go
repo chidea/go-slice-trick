@@ -477,162 +477,162 @@ func Cut(a interface{}, i, j int) interface{} {
 	return reflect.AppendSlice(aval.Slice(0, i), aval.Slice(j, aval.Len())).Interface()
 }
 func DeleteBool(a []bool, i int) []bool {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt(a []int, i int) []int {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt8(a []int8, i int) []int8 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt16(a []int16, i int) []int16 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt32(a []int32, i int) []int32 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt64(a []int64, i int) []int64 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint(a []uint, i int) []uint {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint8(a []uint8, i int) []uint8 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint16(a []uint16, i int) []uint16 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint32(a []uint32, i int) []uint32 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint64(a []uint64, i int) []uint64 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUintptr(a []uintptr, i int) []uintptr {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteFloat32(a []float32, i int) []float32 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteFloat64(a []float64, i int) []float64 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteComplex64(a []complex64, i int) []complex64 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteComplex128(a []complex128, i int) []complex128 {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteStr(a []string, i int) []string {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteRune(a []rune, i int) []rune {
-	if len(a)-1 == i {
+	/*if len(a)-1 == i {
 		return a[:i]
-	}
+	}*/
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
