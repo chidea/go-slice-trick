@@ -51,6 +51,9 @@ func Cut(a interface{}, i, j int) interface{} {
 	return reflect.AppendSlice(aval.Slice(0, i), aval.Slice(j, aval.Len())).Interface()
 }
 func Delete_T_(a []T, i int) []T {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]

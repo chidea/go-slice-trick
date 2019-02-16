@@ -76,6 +76,10 @@ func AppendStr(a, b []string) []string {
 	return append(a, b...)
 }
 
+func AppendRune(a, b []rune) []rune {
+	return append(a, b...)
+}
+
 func Append(a, b interface{}) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -128,6 +132,9 @@ func Append(a, b interface{}) interface{} {
 
 	case string:
 		return interface{}(AppendStr(a.([]string), b.([]string)))
+
+	case rune:
+		return interface{}(AppendRune(a.([]rune), b.([]rune)))
 	} //fall back to reflect lib when it's not a precompiled type*/
 	return reflect.AppendSlice(reflect.ValueOf(a), reflect.ValueOf(b)).Interface()
 }
@@ -266,6 +273,14 @@ func CopyStr(a []string) []string {
 	// or
 	return append([]string(nil), a...)
 }
+
+func CopyRune(a []rune) []rune {
+	/*b := make([]rune, len(a))
+	copy(b, a)
+	return b*/
+	// or
+	return append([]rune(nil), a...)
+}
 func Copy(a interface{}) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -318,6 +333,9 @@ func Copy(a interface{}) interface{} {
 
 	case string:
 		return interface{}(CopyStr(a.([]string)))
+
+	case rune:
+		return interface{}(CopyRune(a.([]rune)))
 	}*/
 	/*aval := reflect.ValueOf(a)
 	alen := aval.Len()
@@ -395,6 +413,10 @@ func CutComplex128(a []complex128, i, j int) []complex128 {
 func CutStr(a []string, i, j int) []string {
 	return append(a[:i], a[j:]...)
 }
+
+func CutRune(a []rune, i, j int) []rune {
+	return append(a[:i], a[j:]...)
+}
 func Cut(a interface{}, i, j int) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -447,107 +469,170 @@ func Cut(a interface{}, i, j int) interface{} {
 
 	case string:
 		return interface{}(CutStr(a.([]string), i, j))
+
+	case rune:
+		return interface{}(CutRune(a.([]rune), i, j))
 	}*/
 	aval := reflect.ValueOf(a)
 	return reflect.AppendSlice(aval.Slice(0, i), aval.Slice(j, aval.Len())).Interface()
 }
 func DeleteBool(a []bool, i int) []bool {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt(a []int, i int) []int {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt8(a []int8, i int) []int8 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt16(a []int16, i int) []int16 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt32(a []int32, i int) []int32 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteInt64(a []int64, i int) []int64 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint(a []uint, i int) []uint {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint8(a []uint8, i int) []uint8 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint16(a []uint16, i int) []uint16 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint32(a []uint32, i int) []uint32 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUint64(a []uint64, i int) []uint64 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteUintptr(a []uintptr, i int) []uintptr {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteFloat32(a []float32, i int) []float32 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteFloat64(a []float64, i int) []float64 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteComplex64(a []complex64, i int) []complex64 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteComplex128(a []complex128, i int) []complex128 {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
 }
 
 func DeleteStr(a []string, i int) []string {
+	if len(a)-1 == i {
+		return a[:i]
+	}
+	return append(a[:i], a[i+1:]...)
+	// or
+	//a = a[:i+copy(a[i:], a[i+1:])]
+}
+
+func DeleteRune(a []rune, i int) []rune {
+	if len(a)-1 == i {
+		return a[:i]
+	}
 	return append(a[:i], a[i+1:]...)
 	// or
 	//a = a[:i+copy(a[i:], a[i+1:])]
@@ -604,6 +689,9 @@ func Delete(a interface{}, i int) interface{} {
 
 	case string:
 		return interface{}(DeleteStr(a.([]string), i))
+
+	case rune:
+		return interface{}(DeleteRune(a.([]rune), i))
 	}*/
 	aval := reflect.ValueOf(a)
 	return reflect.AppendSlice(aval.Slice(0, i), aval.Slice(i+1, aval.Len())).Interface()
@@ -693,6 +781,11 @@ func DeleteWithoutPreservingOrderStr(a []string, i int) []string {
 	a[i] = a[len(a)-1]
 	return a[:len(a)-1]
 }
+
+func DeleteWithoutPreservingOrderRune(a []rune, i int) []rune {
+	a[i] = a[len(a)-1]
+	return a[:len(a)-1]
+}
 func DeleteWithoutPreservingOrder(a interface{}, i int) interface{} { //interface {} {
 	/*switch a.(type) {
 	case bool:
@@ -745,6 +838,9 @@ func DeleteWithoutPreservingOrder(a interface{}, i int) interface{} { //interfac
 
 	case string:
 		return interface{}(DeleteWithoutPreservingOrderStr(a.([]string), i))
+
+	case rune:
+		return interface{}(DeleteWithoutPreservingOrderRune(a.([]rune), i))
 	}*/
 	aval := reflect.ValueOf(a)
 	l := aval.Len()
@@ -819,6 +915,10 @@ func ExpandComplex128(a []complex128, i, j int) []complex128 {
 func ExpandStr(a []string, i, j int) []string {
 	return append(a[:i], append(make([]string, j), a[i:]...)...)
 }
+
+func ExpandRune(a []rune, i, j int) []rune {
+	return append(a[:i], append(make([]rune, j), a[i:]...)...)
+}
 func Expand(a interface{}, i, j int) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -871,6 +971,9 @@ func Expand(a interface{}, i, j int) interface{} {
 
 	case string:
 		return interface{}(ExpandStr(a.([]string), i, j))
+
+	case rune:
+		return interface{}(ExpandRune(a.([]rune), i, j))
 	}*/
 	aval := reflect.ValueOf(a)
 	return reflect.AppendSlice(aval.Slice(0, i), reflect.AppendSlice(reflect.MakeSlice(reflect.TypeOf(a), j, j), aval.Slice(i, aval.Len()))).Interface()
@@ -942,6 +1045,10 @@ func ExtendComplex128(a []complex128, i int) []complex128 {
 func ExtendStr(a []string, i int) []string {
 	return append(a, make([]string, i)...)
 }
+
+func ExtendRune(a []rune, i int) []rune {
+	return append(a, make([]rune, i)...)
+}
 func Extend(a interface{}, i int) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -994,6 +1101,9 @@ func Extend(a interface{}, i int) interface{} {
 
 	case string:
 		return interface{}(ExtendStr(a.([]string), i))
+
+	case rune:
+		return interface{}(ExtendRune(a.([]rune), i))
 	}*/
 	return reflect.AppendSlice(reflect.ValueOf(a), reflect.MakeSlice(reflect.TypeOf(a), i, i)).Interface()
 }
@@ -1064,6 +1174,10 @@ func InsertComplex128(a []complex128, x complex128, i int) []complex128 {
 func InsertStr(a []string, x string, i int) []string {
 	return append(a[:i], append([]string{x}, a[i:]...)...)
 }
+
+func InsertRune(a []rune, x rune, i int) []rune {
+	return append(a[:i], append([]rune{x}, a[i:]...)...)
+}
 func SetIndex(a, b reflect.Value, i int) reflect.Value {
 	a.Index(i).Set(b)
 	return a
@@ -1120,6 +1234,9 @@ func Insert(a, x interface{}, i int) interface{} {
 
 	case string:
 		return interface{}(InsertStr(a.([]string), x.(string), i))
+
+	case rune:
+		return interface{}(InsertRune(a.([]rune), x.(rune), i))
 	}*/
 	aval := reflect.ValueOf(a)
 	return reflect.AppendSlice(aval.Slice(0, i), reflect.AppendSlice(SetIndex(reflect.MakeSlice(reflect.TypeOf(a), 1, 1), reflect.ValueOf(x), 0), aval.Slice(i, aval.Len()))).Interface()
@@ -1191,6 +1308,10 @@ func InsertVectorComplex128(a, b []complex128, i int) []complex128 {
 func InsertVectorStr(a, b []string, i int) []string {
 	return append(a[:i], append(b, a[i:]...)...)
 }
+
+func InsertVectorRune(a, b []rune, i int) []rune {
+	return append(a[:i], append(b, a[i:]...)...)
+}
 func InsertVector(a, b interface{}, i int) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -1243,6 +1364,9 @@ func InsertVector(a, b interface{}, i int) interface{} {
 
 	case string:
 		return interface{}(InsertVectorStr(a.([]string), b.([]string), i))
+
+	case rune:
+		return interface{}(InsertVectorRune(a.([]rune), b.([]rune), i))
 	}*/
 	aval := reflect.ValueOf(a)
 	return reflect.AppendSlice(aval.Slice(0, i), reflect.AppendSlice(reflect.ValueOf(b), aval.Slice(i, aval.Len()))).Interface()
@@ -1315,6 +1439,10 @@ func PopComplex128(a []complex128) (complex128, []complex128) {
 func PopStr(a []string) (string, []string) {
 	return a[len(a)-1], a[:len(a)-1]
 }
+
+func PopRune(a []rune) (rune, []rune) {
+	return a[len(a)-1], a[:len(a)-1]
+}
 func Pop(a interface{}) (interface{}, interface{}) {
 	/*switch a.(type) {
 	case bool:
@@ -1383,6 +1511,10 @@ func Pop(a interface{}) (interface{}, interface{}) {
 
 	case string:
 		a, b := PopStr(a.([]string))
+		return interface{}(a), interface{}(b)
+
+	case rune:
+		a, b := PopRune(a.([]rune))
 		return interface{}(a), interface{}(b)
 	}*/
 	aval := reflect.ValueOf(a)
@@ -1455,6 +1587,10 @@ func PopBackComplex128(a []complex128) (complex128, []complex128) {
 func PopBackStr(a []string) (string, []string) {
 	return a[0], a[1:]
 }
+
+func PopBackRune(a []rune) (rune, []rune) {
+	return a[0], a[1:]
+}
 func PopBack(a interface{}) (interface{}, interface{}) {
 	/*switch a.(type) {
 	case bool:
@@ -1523,6 +1659,10 @@ func PopBack(a interface{}) (interface{}, interface{}) {
 
 	case string:
 		a, b := PopBackStr(a.([]string))
+		return interface{}(a), interface{}(b)
+
+	case rune:
+		a, b := PopBackRune(a.([]rune))
 		return interface{}(a), interface{}(b)
 	}*/
 	aval := reflect.ValueOf(a)
@@ -1595,6 +1735,10 @@ func PushComplex128(a []complex128, x complex128) []complex128 {
 func PushStr(a []string, x string) []string {
 	return append(a, x)
 }
+
+func PushRune(a []rune, x rune) []rune {
+	return append(a, x)
+}
 func Push(a, x interface{}) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -1647,6 +1791,9 @@ func Push(a, x interface{}) interface{} {
 
 	case string:
 		return interface{}(PushStr(a.([]string), x.(string)))
+
+	case rune:
+		return interface{}(PushRune(a.([]rune), x.(rune)))
 	}*/
 	return reflect.Append(reflect.ValueOf(a), reflect.ValueOf(x)).Interface()
 }
@@ -1717,6 +1864,10 @@ func PushBackComplex128(a []complex128, x complex128) []complex128 {
 func PushBackStr(a []string, x string) []string {
 	return append([]string{x}, a...)
 }
+
+func PushBackRune(a []rune, x rune) []rune {
+	return append([]rune{x}, a...)
+}
 func PushBack(a, x interface{}) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -1769,6 +1920,9 @@ func PushBack(a, x interface{}) interface{} {
 
 	case string:
 		return interface{}(PushBackStr(a.([]string), x.(string)))
+
+	case rune:
+		return interface{}(PushBackRune(a.([]rune), x.(rune)))
 	}*/
 	aval := reflect.ValueOf(a)
 	return reflect.AppendSlice(SetIndex(reflect.MakeSlice(reflect.TypeOf(a), 1, 1+aval.Len()), reflect.ValueOf(x), 0), aval).Interface()
@@ -1791,6 +1945,7 @@ var ShiftFloat64 = PopBackFloat64
 var ShiftComplex64 = PopBackComplex64
 var ShiftComplex128 = PopBackComplex128
 var ShiftStr = PopBackStr
+var ShiftRune = PopBackRune
 var Shift = PopBack
 var UnshiftBool = PushBackBool
 var UnshiftInt = PushBackInt
@@ -1809,6 +1964,7 @@ var UnshiftFloat64 = PushBackFloat64
 var UnshiftComplex64 = PushBackComplex64
 var UnshiftComplex128 = PushBackComplex128
 var UnshiftStr = PushBackStr
+var UnshiftRune = PushBackRune
 var Unshift = PushBack
 
 /*func Shift_T_(a []T, x T) (T, []T) {
@@ -1883,6 +2039,10 @@ func UnshiftComplex128(a []complex128, x complex128) []complex128 {
 
 func UnshiftStr(a []string, x string) []string {
 	return append([]string{x}, a...)
+}
+
+func UnshiftRune(a []rune, x rune) []rune {
+	return append([]rune{x}, a...)
 }
 func Unshift(a, x interface{}) interface{} {
 	aval := reflect.ValueOf(a)
@@ -2057,6 +2217,16 @@ func FilterWithoutAllocStr(a []string, f func(string) bool) []string {
 	}
 	return b
 }
+
+func FilterWithoutAllocRune(a []rune, f func(rune) bool) []rune {
+	var b []rune
+	for _, x := range a {
+		if f(x) {
+			b = append(b, x)
+		}
+	}
+	return b
+}
 func FilterWithoutAlloc(a interface{}, f interface{}) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -2109,6 +2279,9 @@ func FilterWithoutAlloc(a interface{}, f interface{}) interface{} {
 
 	case string:
 		return interface{}(FilterWithoutAllocStr(a.([]string), f.(func(v string) bool)))
+
+	case rune:
+		return interface{}(FilterWithoutAllocRune(a.([]rune), f.(func(v rune) bool)))
 	}*/
 	bval := reflect.MakeSlice(reflect.TypeOf(a), 0, 0)
 	aval := reflect.ValueOf(a)
@@ -2322,6 +2495,18 @@ func ReverseStr(a *[]string) []string {
 	}
 	return *a
 }
+
+func ReverseRune(a *[]rune) []rune {
+	/*for i := len(a)/2 - 1; i >= 0; i-- {
+		opp := len(a) - 1 - i
+		a[i], a[opp] = a[opp], a[i]
+	}
+	return a*/
+	for left, right := 0, len(*a)-1; left < right; left, right = left+1, right-1 {
+		(*a)[left], (*a)[right] = (*a)[right], (*a)[left]
+	}
+	return *a
+}
 func Reverse(a interface{}) interface{} {
 	/*switch a.(type) {
 	case bool:
@@ -2374,6 +2559,9 @@ func Reverse(a interface{}) interface{} {
 
 	case string:
 		return interface{}(ReverseStr(a.(*[]string)))
+
+	case rune:
+		return interface{}(ReverseRune(a.(*[]rune)))
 	}*/
 	aval := reflect.Indirect(reflect.ValueOf(a))
 	swap := reflect.Swapper(aval.Interface())
